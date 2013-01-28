@@ -1,0 +1,4 @@
+#!/bin/bash
+# Play the result on audio output
+# Syntax: ./mix (sum|mean|ksum|vttx|f) file1 [file2 ...]
+make && ./mixpoc "$@" | ./play
