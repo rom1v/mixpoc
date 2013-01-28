@@ -1,0 +1,8 @@
+#!/bin/bash
+# Uncomment lines starting by '##' and execute gnuplot
+# Useful for generating png images
+# (commands written in gnuplot files on lines starting with '##')
+for file in "$@"
+do
+  sed 's/^##//' "$file" | gnuplot -
+done
