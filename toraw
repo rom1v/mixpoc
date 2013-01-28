@@ -1,0 +1,8 @@
+#!/bin/bash
+# Convert audio file (any sox supported format) to raw file
+if [ "$#" != 2 ]
+then
+  printf "Syntax: $0 file file.raw\n" >&2
+  exit 1
+fi
+sox "$1" -t raw -r44100 -c2 -b16 -e signed-integer -L "$2"

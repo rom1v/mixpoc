@@ -1,0 +1,8 @@
+#!/bin/bash
+# Convert raw file to wav
+if [ "$#" != 2 ]
+then
+  printf "Syntax: $0 file.raw file.wav\n" >&2
+  exit 1
+fi
+sox -t raw -r44100 -c2 -b16 -e signed-integer -L "$1" -t wav "$2"
