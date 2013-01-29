@@ -20,4 +20,4 @@ max(x, y) = x > y ? x : y
 vtt(x, y) = x + y - x * y
 
 set view 60, 10
-splot vtt(x,y)
+splot vtt(x, y)

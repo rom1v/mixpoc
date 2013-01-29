@@ -19,4 +19,4 @@ g(x) = x * (2 - abs(x))
 mix_f(x, y) = g((x + y) / 2)
 
 set view 60, 10
-splot mix_f(x,y)
+splot mix_f(x, y)
