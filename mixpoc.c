@@ -110,8 +110,7 @@ main(int argc, char *argv[])
   int (*mix) ();                /* mixing function */
 
   if (argc < 3) {
-    fprintf(stderr,
-            "Syntax: %s (sum|mean|ksum|vttx|f) mix_function file...\n",
+    fprintf(stderr, "Syntax: %s (sum|mean|ksum|vttx|f) file1 [file2 [...]]\n",
             argv[0]);
     exit(1);
   }
