@@ -3,7 +3,7 @@
 
 set contour base
 set cntrparam levels 20
-set samples 21, 21
+set samples 101, 101
 set isosamples 21, 21
 set xyplane at 0
 set title "g, compromis entre la somme et la moyenne"
