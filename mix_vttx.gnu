@@ -7,9 +7,9 @@ set samples 101, 101
 set isosamples 21, 21
 set xyplane at 0
 set title "mix_vttx"
-set xlabel "Échantillon 1" 
+set xlabel "Échantillon 1 (x)"
 set xrange [ -1 : 1 ] noreverse nowriteback
-set ylabel "Échantillon 2" 
+set ylabel "Échantillon 2 (y)"
 set yrange [ -1 : 1 ] noreverse nowriteback
 set zlabel "Mixage"
 set zrange [ -1 : 1 ] noreverse nowriteback

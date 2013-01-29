@@ -7,9 +7,9 @@ set samples 101, 101
 set isosamples 21, 21
 set xyplane at 0
 set title "vtt pour x et y positifs"
-set xlabel "Échantillon 1" 
+set xlabel "Échantillon 1 (x)"
 set xrange [ 0 : 1 ] noreverse nowriteback
-set ylabel "Échantillon 2" 
+set ylabel "Échantillon 2 (x)"
 set yrange [ 0 : 1 ] noreverse nowriteback
 set zlabel "Mixage" 
 set zrange [ 0 : 1 ] noreverse nowriteback
