@@ -4,6 +4,7 @@
  */
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 static int
 _sum(int n, int samples[])
@@ -14,6 +15,16 @@ _sum(int n, int samples[])
     sum += samples[i];
   }
   return sum;
+}
+
+/* convert from [-1.; 1.] to [-32768; 32767] */
+static int
+to_int16(double x)
+{
+  int res = x * 32768;
+  if (res == 32768)
+    res = 32767;
+  return res;
 }
 
 int
@@ -55,10 +66,10 @@ _mix2_vttx(int s1, int s2)
   double x = s1 / 32768.;
   double y = s2 / 32768.;
   if (x >= 0 && y >= 0) {
-    return (int) (32768 * (x + y - x * y));
+    return to_int16(x + y - x * y);
   }
   if (x <= 0 && y <= 0) {
-    return (int) (32768 * (x + y + x * y));
+    return to_int16(x + y + x * y);
   }
   return s1 + s2;
 }
@@ -74,34 +85,18 @@ mix_vttx(int n, int samples[])
   return sample;
 }
 
-static int
-g(int n, int samples[])
-{
-  double sum = 0;
-  double res;
-  int i;
-  for (i = 0; i < n; i++) {
-    sum += samples[i] / 32768.;
-  }
-  res = sum / n;
-  return (int) (res * 32768);
-}
-
 int
 mix_f(int n, int samples[])
 {
   double sum = 0;
   double z;
-  double res;
   int i;
   for (i = 0; i < n; i++) {
     sum += samples[i] / 32768.;
   }
   z = sum / n;
-  res = z * (2 - (z >= 0 ? z : -z));
-  return (int) (res * 32768);
+  return to_int16(z * (2 - (z >= 0 ? z : -z)));
 }
-
 
 int
 main(int argc, char *argv[])
@@ -173,7 +168,7 @@ main(int argc, char *argv[])
     }
   } while (hasdata);
 
-  /* file descriptors will be closed automatically */
+  /* files will be closed automatically (end of main) */
 
   return 0;
 }
