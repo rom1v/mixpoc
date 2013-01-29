@@ -1,2 +1,7 @@
+.PHONY: clean
+
 mixpoc: mixpoc.c
-	gcc mixpoc.c -o mixpoc
+	cc mixpoc.c -o mixpoc -Wall
+
+clean:
+	rm -f mixpoc
