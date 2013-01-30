@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 
 static int
 _sum(int n, int samples[])
@@ -48,9 +49,12 @@ mix_mean(int n, int samples[])
 static int
 _mix_ksum(double k, int n, int samples[])
 {
-  /* this formula makes _mix_ksum an abstraction of sum and mean (try with
-     k=1 or k=0.5) */
-  double coeff = 1 - ((1 - 1. / n) * (2 * (1 - k)));
+  /* coeff = k^(log2(n))
+   * If you try to mix 4 tracks a, b, c, d, it should be equivalent to do:
+   *  k(k(a + b) + k(c + d)) = k²(a + b + c + d)
+   * The coeff for n tracks grows as log2(n).
+   */
+  double coeff = pow(k, log(n) / log(2));
   return (int) (_sum(n, samples) * coeff);
 }
 
