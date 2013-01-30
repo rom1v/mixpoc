@@ -54,7 +54,7 @@ _mix_ksum(double k, int n, int samples[])
    *  k(k(a + b) + k(c + d)) = k²(a + b + c + d)
    * The coeff for n tracks grows as log2(n).
    */
-  double coeff = pow(k, log(n) / log(2));
+  double coeff = pow(k, log2(n));
   return (int) (_sum(n, samples) * coeff);
 }
 
