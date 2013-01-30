@@ -1,0 +1,19 @@
+#!/bin/bash
+# Generate a sine wave (5 seconds)
+#  $1: frequency (Hz)
+#  $2: volume (between 0 and 1)
+#  $3: output file ('-' for stdout)
+
+if [ "$#" != 3 ]
+then
+  printf "Syntax: $0 freqhz volume file\n" >&2
+  exit 1
+fi
+
+duration=5
+freq="$1"
+vol="$2"
+file="$3"
+
+sox -r44100 -c2 -b16 -e signed-integer -L -D -n -t raw "$file" \
+  synth "$duration" sine "$freq" vol "$vol"
