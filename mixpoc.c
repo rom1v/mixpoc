@@ -123,7 +123,7 @@ main(int argc, char *argv[])
   for (i = 0; i < filecount; i++) {
     files[i] = fopen(argv[i + 2], "r");
     if (files[i] == NULL) {
-      fprintf(stderr, "Error opening %s\n", argv[i]);
+      fprintf(stderr, "Error opening %s\n", argv[i + 2]);
       exit(2);
     }
   }
