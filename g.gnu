@@ -16,9 +16,16 @@ set key right bottom
 min(x, y) = x < y ? x : y
 max(x, y) = x > y ? x : y
 
-ksum(k, z) = max(-1, min(1, 2 * k * z))
+n = 2  # sample count
+
+ksum(k, z) = max(-1, min(1, n * k * z))
 sum(z) = ksum(1, z)
-mean(z) = ksum(0.5, z)
-g(z) = z * (2 - abs(z))
+mean(z) = ksum(1./n, z)
+
+# only for 2 samples
+#g(x) = x * (2 - abs(x))
+
+# general function for n samples
+g(x) = sgn(x) * (1 - (1 - abs(x)) ** n)
 
 plot mean(x), sum(x), g(x)

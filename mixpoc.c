@@ -102,7 +102,9 @@ int
 mix_f(int n, int samples[])
 {
   double z = _dsum(n, samples) / n;
-  return to_int16(z * (2 - (z >= 0 ? z : -z)));
+  int sgn = z >= 0 ? 1 : -1;
+  double g = sgn * (1 - pow(1 - sgn * z, n));
+  return to_int16(g);
 }
 
 int

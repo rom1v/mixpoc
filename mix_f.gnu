@@ -15,7 +15,14 @@ set zlabel "Mixage"
 set zrange [ -1 : 1 ] noreverse nowriteback
 set key off # no legend
 
-g(x) = x * (2 - abs(x))
+n = 2  # sample count
+
+# only for 2 samples
+#g(x) = x * (2 - abs(x))
+
+# general function for n samples
+g(x) = sgn(x) * (1 - (1 - abs(x)) ** n)
+
 mix_f(x, y) = g((x + y) / 2)
 
 set view 60, 10
